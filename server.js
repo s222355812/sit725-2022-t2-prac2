@@ -1,8 +1,6 @@
 var express= require("express")
 var app=express()
 
-
-
 app.use(express.static(__dirname+'/public'));
 app.use(express.json());
 app.use(express.urlencoded({extends:false}));
@@ -44,7 +42,7 @@ const addTwoNums = (num1, num2) => {
              
              res.json({statusCode:200,data:result,message:"Success"})
             
-            
+             
          })
 
       //method to multiply 2 numbers  
