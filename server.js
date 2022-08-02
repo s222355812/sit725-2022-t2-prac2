@@ -13,18 +13,38 @@ const addTwoNums = (num1, num2) => {
    var result= number1+number2;
    return result;
     }
-    app.get('/addTwoNumbers', (req, res)=>{
-        res.sendFile(__dirname + '/index.html'); //Gets the html
-    });
-    app.post("/addTwoNumbers",(req,res)=>{
+    //REST - GET (using query param)
+    app.get("/addTwoNumbers",(req,res)=>{
         var num1=req.query.num1;
         var num2=req.query.num2;
         var result= addTwoNums(num1,num2);
         
         res.json({statusCode:200,data:result,message:"Success"})
-       
+       if(res.statusCode==404){
+        res.send('error');
+       }
        // res.send(`Sum of two numbers is ${result}`);
     })
+
+    //REST - POST (using body param)
+    const subTwoNums = (num3, num4) => {
+        var number1=parseInt(num3);
+        var number2=parseInt(num4);
+        var result= number1-number2;
+        return result;
+         }
+         
+         app.post("/subTwoNumbers",(req,res)=>{
+             var num3=req.body.num3;
+             var num4=req.body.num4;
+             var result= subTwoNums(num3,num4);
+             
+             res.json({statusCode:200,data:result,message:"Success"})
+            
+            
+         })
+       
+   
   
 
 var port=process.env.port||3000;
